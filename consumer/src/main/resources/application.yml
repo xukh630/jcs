@@ -1,0 +1,16 @@
+server:
+  port: 81
+
+
+dubbo:
+  application:
+    name: consumer
+    qos-enable: false
+  registry:
+    address: zookeeper://127.0.0.1:2181
+  consumer:
+    cache: false
+    check: false
+    timeout: 60000
+  scan:
+    base-packages: com.jcs.consumer
