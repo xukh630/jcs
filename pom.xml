@@ -17,8 +17,8 @@
 
     <modules>
         <module>api</module>
-        <module>consumer</module>
-        <module>provider</module>
+        <module>order</module>
+        <module>user</module>
     </modules>
 
     <properties>

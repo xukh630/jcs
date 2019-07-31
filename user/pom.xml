@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>consumer</artifactId>
+    <artifactId>user</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
