@@ -19,7 +19,6 @@
         <module>api</module>
         <module>consumer</module>
         <module>provider</module>
-        <module>mybatis-plugin</module>
     </modules>
 
     <properties>
