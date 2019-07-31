@@ -12,6 +12,7 @@ public class MyJavaTypeResolver extends JavaTypeResolverDefaultImpl {
 
     public MyJavaTypeResolver() {
         super();
+		System.out.println("test");
         super.typeMap.put(-6, new JavaTypeResolverDefaultImpl.JdbcTypeInformation("TINYINT", new FullyQualifiedJavaType(Integer.class.getName())));
     }
 
