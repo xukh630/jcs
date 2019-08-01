@@ -1,9 +1,9 @@
 server:
-  port: 81
+  port: 83
 
 dubbo:
   application:
-    name: consumer
+    name: open-dota
     qos-enable: false
   registry:
     address: zookeeper://127.0.0.1:2181
@@ -11,8 +11,10 @@ dubbo:
     cache: false
     check: false
     timeout: 60000
+  provider:
+    timeout: 60000
   scan:
-    base-packages: com.jcs.consumer
+    base-packages: com.jcs.opendota
 
 spring:
   datasource:

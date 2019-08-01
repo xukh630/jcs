@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cjs.opendota.mapper.HeroMapper" >
+  <resultMap id="BaseResultMap" type="com.jcs.opendota.model.Hero" >
+    <id column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="hero_cn_name" property="heroCnName" jdbcType="VARCHAR" />
+    <result column="hero_en_name" property="heroEnName" jdbcType="VARCHAR" />
+    <result column="hero_type" property="heroType" jdbcType="INTEGER" />
+    <result column="power" property="power" jdbcType="DECIMAL" />
+    <result column="agile" property="agile" jdbcType="DECIMAL" />
+    <result column="intellectual" property="intellectual" jdbcType="DECIMAL" />
+    <result column="power_grow" property="powerGrow" jdbcType="DECIMAL" />
+    <result column="agile_grow" property="agileGrow" jdbcType="DECIMAL" />
+    <result column="intellectual_grow" property="intellectualGrow" jdbcType="DECIMAL" />
+    <result column="moveing_speed" property="moveingSpeed" jdbcType="INTEGER" />
+    <result column="attack_interval_cap" property="attackIntervalCap" jdbcType="INTEGER" />
+    <result column="attack_interval_lower" property="attackIntervalLower" jdbcType="INTEGER" />
+    <result column="armor" property="armor" jdbcType="INTEGER" />
+    <result column="material_resistance" property="materialResistance" jdbcType="INTEGER" />
+    <result column="magic_resistance" property="magicResistance" jdbcType="INTEGER" />
+    <result column="blood_volume" property="bloodVolume" jdbcType="INTEGER" />
+    <result column="magic_volume" property="magicVolume" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uuid, hero_cn_name, hero_en_name, hero_type, power, agile, intellectual, power_grow, 
+    agile_grow, intellectual_grow, moveing_speed, attack_interval_cap, attack_interval_lower, 
+    armor, material_resistance, magic_resistance, blood_volume, magic_volume
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_hero
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_hero
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kh.plugin.plus.model.Hero" >
+    insert into t_hero (uuid, hero_cn_name, hero_en_name, 
+      hero_type, power, agile, 
+      intellectual, power_grow, agile_grow, 
+      intellectual_grow, moveing_speed, attack_interval_cap, 
+      attack_interval_lower, armor, material_resistance, 
+      magic_resistance, blood_volume, magic_volume
+      )
+    values (#{uuid,jdbcType=VARCHAR}, #{heroCnName,jdbcType=VARCHAR}, #{heroEnName,jdbcType=VARCHAR}, 
+      #{heroType,jdbcType=INTEGER}, #{power,jdbcType=DECIMAL}, #{agile,jdbcType=DECIMAL}, 
+      #{intellectual,jdbcType=DECIMAL}, #{powerGrow,jdbcType=DECIMAL}, #{agileGrow,jdbcType=DECIMAL}, 
+      #{intellectualGrow,jdbcType=DECIMAL}, #{moveingSpeed,jdbcType=INTEGER}, #{attackIntervalCap,jdbcType=INTEGER}, 
+      #{attackIntervalLower,jdbcType=INTEGER}, #{armor,jdbcType=INTEGER}, #{materialResistance,jdbcType=INTEGER}, 
+      #{magicResistance,jdbcType=INTEGER}, #{bloodVolume,jdbcType=INTEGER}, #{magicVolume,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kh.plugin.plus.model.Hero" >
+    insert into t_hero
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="heroCnName != null" >
+        hero_cn_name,
+      </if>
+      <if test="heroEnName != null" >
+        hero_en_name,
+      </if>
+      <if test="heroType != null" >
+        hero_type,
+      </if>
+      <if test="power != null" >
+        power,
+      </if>
+      <if test="agile != null" >
+        agile,
+      </if>
+      <if test="intellectual != null" >
+        intellectual,
+      </if>
+      <if test="powerGrow != null" >
+        power_grow,
+      </if>
+      <if test="agileGrow != null" >
+        agile_grow,
+      </if>
+      <if test="intellectualGrow != null" >
+        intellectual_grow,
+      </if>
+      <if test="moveingSpeed != null" >
+        moveing_speed,
+      </if>
+      <if test="attackIntervalCap != null" >
+        attack_interval_cap,
+      </if>
+      <if test="attackIntervalLower != null" >
+        attack_interval_lower,
+      </if>
+      <if test="armor != null" >
+        armor,
+      </if>
+      <if test="materialResistance != null" >
+        material_resistance,
+      </if>
+      <if test="magicResistance != null" >
+        magic_resistance,
+      </if>
+      <if test="bloodVolume != null" >
+        blood_volume,
+      </if>
+      <if test="magicVolume != null" >
+        magic_volume,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="heroCnName != null" >
+        #{heroCnName,jdbcType=VARCHAR},
+      </if>
+      <if test="heroEnName != null" >
+        #{heroEnName,jdbcType=VARCHAR},
+      </if>
+      <if test="heroType != null" >
+        #{heroType,jdbcType=INTEGER},
+      </if>
+      <if test="power != null" >
+        #{power,jdbcType=DECIMAL},
+      </if>
+      <if test="agile != null" >
+        #{agile,jdbcType=DECIMAL},
+      </if>
+      <if test="intellectual != null" >
+        #{intellectual,jdbcType=DECIMAL},
+      </if>
+      <if test="powerGrow != null" >
+        #{powerGrow,jdbcType=DECIMAL},
+      </if>
+      <if test="agileGrow != null" >
+        #{agileGrow,jdbcType=DECIMAL},
+      </if>
+      <if test="intellectualGrow != null" >
+        #{intellectualGrow,jdbcType=DECIMAL},
+      </if>
+      <if test="moveingSpeed != null" >
+        #{moveingSpeed,jdbcType=INTEGER},
+      </if>
+      <if test="attackIntervalCap != null" >
+        #{attackIntervalCap,jdbcType=INTEGER},
+      </if>
+      <if test="attackIntervalLower != null" >
+        #{attackIntervalLower,jdbcType=INTEGER},
+      </if>
+      <if test="armor != null" >
+        #{armor,jdbcType=INTEGER},
+      </if>
+      <if test="materialResistance != null" >
+        #{materialResistance,jdbcType=INTEGER},
+      </if>
+      <if test="magicResistance != null" >
+        #{magicResistance,jdbcType=INTEGER},
+      </if>
+      <if test="bloodVolume != null" >
+        #{bloodVolume,jdbcType=INTEGER},
+      </if>
+      <if test="magicVolume != null" >
+        #{magicVolume,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kh.plugin.plus.model.Hero" >
+    update t_hero
+    <set >
+      <if test="heroCnName != null" >
+        hero_cn_name = #{heroCnName,jdbcType=VARCHAR},
+      </if>
+      <if test="heroEnName != null" >
+        hero_en_name = #{heroEnName,jdbcType=VARCHAR},
+      </if>
+      <if test="heroType != null" >
+        hero_type = #{heroType,jdbcType=INTEGER},
+      </if>
+      <if test="power != null" >
+        power = #{power,jdbcType=DECIMAL},
+      </if>
+      <if test="agile != null" >
+        agile = #{agile,jdbcType=DECIMAL},
+      </if>
+      <if test="intellectual != null" >
+        intellectual = #{intellectual,jdbcType=DECIMAL},
+      </if>
+      <if test="powerGrow != null" >
+        power_grow = #{powerGrow,jdbcType=DECIMAL},
+      </if>
+      <if test="agileGrow != null" >
+        agile_grow = #{agileGrow,jdbcType=DECIMAL},
+      </if>
+      <if test="intellectualGrow != null" >
+        intellectual_grow = #{intellectualGrow,jdbcType=DECIMAL},
+      </if>
+      <if test="moveingSpeed != null" >
+        moveing_speed = #{moveingSpeed,jdbcType=INTEGER},
+      </if>
+      <if test="attackIntervalCap != null" >
+        attack_interval_cap = #{attackIntervalCap,jdbcType=INTEGER},
+      </if>
+      <if test="attackIntervalLower != null" >
+        attack_interval_lower = #{attackIntervalLower,jdbcType=INTEGER},
+      </if>
+      <if test="armor != null" >
+        armor = #{armor,jdbcType=INTEGER},
+      </if>
+      <if test="materialResistance != null" >
+        material_resistance = #{materialResistance,jdbcType=INTEGER},
+      </if>
+      <if test="magicResistance != null" >
+        magic_resistance = #{magicResistance,jdbcType=INTEGER},
+      </if>
+      <if test="bloodVolume != null" >
+        blood_volume = #{bloodVolume,jdbcType=INTEGER},
+      </if>
+      <if test="magicVolume != null" >
+        magic_volume = #{magicVolume,jdbcType=INTEGER},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kh.plugin.plus.model.Hero" >
+    update t_hero
+    set hero_cn_name = #{heroCnName,jdbcType=VARCHAR},
+      hero_en_name = #{heroEnName,jdbcType=VARCHAR},
+      hero_type = #{heroType,jdbcType=INTEGER},
+      power = #{power,jdbcType=DECIMAL},
+      agile = #{agile,jdbcType=DECIMAL},
+      intellectual = #{intellectual,jdbcType=DECIMAL},
+      power_grow = #{powerGrow,jdbcType=DECIMAL},
+      agile_grow = #{agileGrow,jdbcType=DECIMAL},
+      intellectual_grow = #{intellectualGrow,jdbcType=DECIMAL},
+      moveing_speed = #{moveingSpeed,jdbcType=INTEGER},
+      attack_interval_cap = #{attackIntervalCap,jdbcType=INTEGER},
+      attack_interval_lower = #{attackIntervalLower,jdbcType=INTEGER},
+      armor = #{armor,jdbcType=INTEGER},
+      material_resistance = #{materialResistance,jdbcType=INTEGER},
+      magic_resistance = #{magicResistance,jdbcType=INTEGER},
+      blood_volume = #{bloodVolume,jdbcType=INTEGER},
+      magic_volume = #{magicVolume,jdbcType=INTEGER}
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

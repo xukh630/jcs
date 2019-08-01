@@ -19,6 +19,7 @@
         <module>api</module>
         <module>consumer</module>
         <module>provider</module>
+        <module>open-dota</module>
     </modules>
 
     <properties>
