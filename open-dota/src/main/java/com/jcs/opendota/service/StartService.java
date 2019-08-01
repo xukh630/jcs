@@ -5,4 +5,6 @@ package com.jcs.opendota.service;
  * @date 2019/8/1 16:24
  */
 public interface StartService {
+
+    String get();
 }

@@ -2,7 +2,6 @@ package com.jcs.api.controller;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.jcs.opendota.service.StartServiceImpl;
 import com.jcs.provider.service.StartService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +17,7 @@ public class StartController {
     @Reference
     private StartService startService;
     @Reference
-    private StartServiceImpl start;
+    private com.jcs.opendota.service.StartService start;
 
     @RequestMapping("/start")
     public String start(){

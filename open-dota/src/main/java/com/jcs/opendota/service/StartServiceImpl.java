@@ -9,6 +9,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 @Service
 public class StartServiceImpl implements StartService{
 
+    @Override
     public String get(){
         return "open-dota";
     }
