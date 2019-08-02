@@ -7,7 +7,7 @@ import com.alibaba.dubbo.config.annotation.Service;
  * @date 2019/8/1 16:04
  */
 @Service
-public class StartServiceImpl implements StartService{
+public class OpenDotaServiceImpl implements OpenDotaService {
 
     @Override
     public String get(){

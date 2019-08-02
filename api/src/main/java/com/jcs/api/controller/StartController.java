@@ -2,7 +2,9 @@ package com.jcs.api.controller;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.jcs.provider.service.StartService;
+import com.jcs.consumer.service.ConsumerService;
+import com.jcs.opendota.service.OpenDotaService;
+import com.jcs.provider.service.ProviderService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,12 +17,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class StartController {
 
     @Reference
-    private StartService startService;
+    private ProviderService providerService;
     @Reference
-    private com.jcs.opendota.service.StartService start;
+    private OpenDotaService openDotaService;
+    @Reference
+    private ConsumerService consumerService;
 
-    @RequestMapping("/start")
-    public String start(){
-        return start.get();
+    @RequestMapping("/provider")
+    public String provider(){
+        return providerService.get();
+    }
+
+    @RequestMapping("/openDota")
+    public String openDota(){
+        return openDotaService.get();
+    }
+
+    @RequestMapping("/consumer")
+    public String consumer(){
+        return consumerService.get();
     }
 }
