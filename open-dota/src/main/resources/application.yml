@@ -13,6 +13,11 @@ dubbo:
     timeout: 60000
   provider:
     timeout: 60000
+  monitor:
+    protocol: register
+  protocol:
+    name: dubbo
+    port: '20883'
   scan:
     base-packages: com.jcs.opendota
 
