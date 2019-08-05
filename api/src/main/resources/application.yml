@@ -8,18 +8,18 @@ dubbo:
   registry:
     address: zookeeper://192.168.16.100:2181
   consumer:
-    cache: false
-    check: false
+    cache: "false"
+    check: "false"
     timeout: 60000
   provider:
-    cache: false
-    check: false
+    cache: "false"
+    check: "false"
     timeout: 60000
   monitor:
     protocol: register
   protocol:
     name: dubbo
-    port: '20880'
+    port: "20880"
 
 
 
