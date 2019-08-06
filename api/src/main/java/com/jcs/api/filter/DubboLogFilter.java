@@ -42,14 +42,12 @@ public class DubboLogFilter implements Filter {
     }
 
     private String getTraceId(){
-        String traceId = RpcContext.getContext().getAttachment(HttpTraceLogFilter.TRACE_ID);
-        if(StringUtils.isBlank(traceId)){
-            traceId = MDC.get(HttpTraceLogFilter.TRACE_ID);
-            if(StringUtils.isNotBlank(traceId)){
-                Map<String,String> aAttachments = new HashMap<>();
-                aAttachments.put(HttpTraceLogFilter.TRACE_ID,traceId);
-                RpcContext.getContext().setAttachments(aAttachments);
-            }
+
+        String traceId = MDC.get(HttpTraceLogFilter.TRACE_ID);
+        if(StringUtils.isNotBlank(traceId)){
+            Map<String,String> aAttachments = new HashMap<>();
+            aAttachments.put(HttpTraceLogFilter.TRACE_ID,traceId);
+            RpcContext.getContext().setAttachments(aAttachments);
         }else{
             MDC.put(HttpTraceLogFilter.TRACE_ID,traceId);
         }
