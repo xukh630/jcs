@@ -12,10 +12,14 @@ dubbo:
     check: "false"
     timeout: 60000
     filter: dubboLogFilter
+  provider:
+    cache: "false"
+    check: "false"
+    timeout: 60000
+    filter: dubboLogFilter
   protocol:
     name: dubbo
     port: "20881"
-
   scan:
     base-packages: com.jcs.consumer
 

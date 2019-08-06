@@ -14,6 +14,9 @@ dubbo:
     filter: dubboLogFilter
   provider:
     timeout: 60000
+    cache: "false"
+    check: "false"
+    filter: dubboLogFilter
   monitor:
     protocol: register
   protocol:
