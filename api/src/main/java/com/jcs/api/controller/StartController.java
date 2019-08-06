@@ -6,7 +6,10 @@ import com.jcs.api.service.ApiService;
 import com.jcs.consumer.service.ConsumerService;
 import com.jcs.opendota.service.OpenDotaService;
 import com.jcs.provider.service.ProviderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/start")
 public class StartController {
+
+    private static final Logger log = LoggerFactory.getLogger(StartController.class);
 
     @Reference
     private ProviderService providerService;
@@ -46,6 +51,13 @@ public class StartController {
 
     @RequestMapping("/consumer")
     public String consumer(){
+
+        log.info("调用 consumer");
         return consumerService.get();
+    }
+
+    @PostMapping("/getProviderByConsumer")
+    public String getProviderByConsumer(){
+        return consumerService.getProvider();
     }
 }

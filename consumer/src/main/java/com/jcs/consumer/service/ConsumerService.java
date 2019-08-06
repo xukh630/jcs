@@ -7,4 +7,6 @@ package com.jcs.consumer.service;
 public interface ConsumerService {
 
     String get();
+
+    String getProvider();
 }
