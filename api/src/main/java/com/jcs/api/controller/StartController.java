@@ -53,11 +53,21 @@ public class StartController {
     public String consumer(){
 
         log.info("调用 consumer");
+
+        log.info("第一次调用");
+        consumerService.get();
+
+        log.info("第二次调用");
         return consumerService.get();
     }
 
     @PostMapping("/getProviderByConsumer")
     public String getProviderByConsumer(){
         return consumerService.getProvider();
+    }
+
+    @PostMapping("/executeThreadPool")
+    public String executeThreadPool(){
+        return consumerService.executeThreadPool();
     }
 }

@@ -9,4 +9,6 @@ public interface ConsumerService {
     String get();
 
     String getProvider();
+
+    String executeThreadPool();
 }
