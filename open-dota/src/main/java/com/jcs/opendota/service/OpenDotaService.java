@@ -1,5 +1,9 @@
 package com.jcs.opendota.service;
 
+import com.jcs.base.response.Response;
+import com.jcs.opendota.model.Hero;
+
+
 /**
  * @auther xukh
  * @date 2019/8/1 16:24
@@ -7,4 +11,6 @@ package com.jcs.opendota.service;
 public interface OpenDotaService {
 
     String get();
+
+    Response<Hero> getHeroInfoByUuid(String uuid);
 }

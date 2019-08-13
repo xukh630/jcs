@@ -1,6 +1,11 @@
 package com.jcs.opendota.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.jcs.base.response.Response;
+import com.jcs.opendota.mapper.HeroMapper;
+import com.jcs.opendota.model.Hero;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @auther xukh
@@ -9,8 +14,21 @@ import com.alibaba.dubbo.config.annotation.Service;
 @Service
 public class OpenDotaServiceImpl implements OpenDotaService {
 
+    @Autowired
+    private HeroMapper heroMapper;
+
     @Override
     public String get(){
         return "open-dota";
     }
+
+    @Override
+    public Response<Hero> getHeroInfoByUuid(String uuid) {
+
+        Hero hero = heroMapper.selectByPrimaryKey(uuid);
+
+        return Response.createSuccess(hero);
+    }
+
+
 }
