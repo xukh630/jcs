@@ -13,4 +13,8 @@ public interface OpenDotaService {
     String get();
 
     Response<Hero> getHeroInfoByUuid(String uuid);
+
+    Response<String> selectUuid();
+
+    Response<Integer> selectCount();
 }

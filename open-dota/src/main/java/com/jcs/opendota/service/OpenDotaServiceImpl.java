@@ -4,7 +4,6 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.jcs.base.response.Response;
 import com.jcs.opendota.mapper.HeroMapper;
 import com.jcs.opendota.model.Hero;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -28,6 +27,22 @@ public class OpenDotaServiceImpl implements OpenDotaService {
         Hero hero = heroMapper.selectByPrimaryKey(uuid);
 
         return Response.createSuccess(hero);
+    }
+
+    @Override
+    public Response<String> selectUuid() {
+
+        String s = heroMapper.selectuuids("1");
+
+        return Response.createSuccess(s);
+    }
+
+    @Override
+    public Response<Integer> selectCount() {
+
+        int i = heroMapper.selectCount();
+
+        return Response.createSuccess(i);
     }
 
 

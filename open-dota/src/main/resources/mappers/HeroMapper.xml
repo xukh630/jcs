@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.cjs.opendota.mapper.HeroMapper" >
+<mapper namespace="com.jcs.opendota.mapper.HeroMapper" >
   <resultMap id="BaseResultMap" type="com.jcs.opendota.model.Hero" >
     <id column="uuid" property="uuid" jdbcType="VARCHAR" />
     <result column="hero_cn_name" property="heroCnName" jdbcType="VARCHAR" />
@@ -36,7 +36,7 @@
     delete from t_hero
     where uuid = #{uuid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.kh.plugin.plus.model.Hero" >
+  <insert id="insert" parameterType="com.jcs.opendota.model.Hero" >
     insert into t_hero (uuid, hero_cn_name, hero_en_name, 
       hero_type, power, agile, 
       intellectual, power_grow, agile_grow, 
@@ -52,7 +52,7 @@
       #{magicResistance,jdbcType=INTEGER}, #{bloodVolume,jdbcType=INTEGER}, #{magicVolume,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.kh.plugin.plus.model.Hero" >
+  <insert id="insertSelective" parameterType="com.jcs.opendota.model.Hero" >
     insert into t_hero
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="uuid != null" >
@@ -167,7 +167,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.kh.plugin.plus.model.Hero" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.jcs.opendota.model.Hero" >
     update t_hero
     <set >
       <if test="heroCnName != null" >
@@ -224,7 +224,7 @@
     </set>
     where uuid = #{uuid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.kh.plugin.plus.model.Hero" >
+  <update id="updateByPrimaryKey" parameterType="com.jcs.opendota.model.Hero" >
     update t_hero
     set hero_cn_name = #{heroCnName,jdbcType=VARCHAR},
       hero_en_name = #{heroEnName,jdbcType=VARCHAR},

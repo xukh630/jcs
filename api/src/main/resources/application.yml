@@ -6,7 +6,7 @@ dubbo:
     name: api
     qos-enable: false
   registry:
-    address: zookeeper://192.168.16.100:2181
+    address: zookeeper://127.0.0.1:2181
   consumer:
     cache: "false"
     check: "false"
