@@ -31,3 +31,9 @@ spring:
     username: test1
     password: P@ssw0rd
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  #实体类所做包
+  #  type-aliases-package: learning.model
+  #mapper.xml所在位置
+  mapper-locations: classpath:mappers/*.xml
