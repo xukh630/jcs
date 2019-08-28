@@ -3,7 +3,6 @@ package com.jcs.consumer.service;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.dubbo.rpc.RpcContext;
-import com.jcs.consumer.filter.HttpTraceLogFilter;
 import com.jcs.consumer.threadPool.ThreadPools;
 import com.jcs.provider.service.ProviderService;
 import org.slf4j.Logger;
@@ -33,15 +32,23 @@ public class ConsumerServiceImpl implements ConsumerService{
 
     @Override
     public String executeThreadPool() {
+
+        InheritableThreadLocal<Object> local = new InheritableThreadLocal<>();
+
+
         try {
-            ThreadPools instance = ThreadPools.getInstance();
-            instance.traceIdThreadPool(new Runnable() {
-                @Override
-                public void run() {
-                    String traceId = RpcContext.getContext().getAttachment(HttpTraceLogFilter.TRACE_ID);
-                    log.info("traceId={}",traceId);
-                }
-            });
+
+            for (int i = 0; i < 10; i++) {
+                ThreadPools instance = ThreadPools.getInstance();
+                instance.traceIdThreadPool(new Runnable() {
+                    @Override
+                    public void run() {
+                        String traceId = RpcContext.getContext().getAttachment(HttpTraceLogFilter.TRACE_ID);
+                        log.info("traceId={}",traceId);
+                        System.out.println(traceId);
+                    }
+                });
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -49,5 +56,10 @@ public class ConsumerServiceImpl implements ConsumerService{
         return "finish";
     }
 
+    public static void main(String[] args) {
+        ThreadLocal threadLocal = new ThreadLocal();
+
+
+    }
 
 }

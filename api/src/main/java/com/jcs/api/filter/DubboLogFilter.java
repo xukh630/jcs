@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author liuluokang
+ * @author
  * @date: 2019-07-08 17:39
  * @des: dubbo接口调用日志过滤器
  */
@@ -33,9 +33,9 @@ public class DubboLogFilter implements Filter {
         long elapsed = System.currentTimeMillis() - startTime;
         //如果发生异常 则打印异常日志
         if (result.hasException() && invoker.getInterface() != GenericService.class) {
-            logger.error("traceId={} InterfaceName={} dubbo执行异常: {}", traceId, rpcName, result.getException());
+            logger.error("InterfaceName={} dubbo执行异常: {}", rpcName, result.getException());
         } else {
-            logger.info("traceId={} >>> InterfaceName={} , Resposne={} , SpendTime={} ms", traceId, rpcName, JSON.toJSONString(new Object[]{result.getValue()}), elapsed);
+            logger.info("InterfaceName={} , Resposne={} , SpendTime={} ms", rpcName, JSON.toJSONString(new Object[]{result.getValue()}), elapsed);
         }
         //返回结果响应结果
         return result;
@@ -43,8 +43,11 @@ public class DubboLogFilter implements Filter {
 
     private String getTraceId(){
 
-        String traceId = MDC.get(HttpTraceLogFilter.TRACE_ID);
-        if(StringUtils.isNotBlank(traceId)){
+        String traceId = RpcContext.getContext().getAttachment(HttpTraceLogFilter.TRACE_ID);
+        if(StringUtils.isBlank(traceId)){
+
+            traceId = MDC.get(HttpTraceLogFilter.TRACE_ID);
+
             Map<String,String> aAttachments = new HashMap<>();
             aAttachments.put(HttpTraceLogFilter.TRACE_ID,traceId);
             RpcContext.getContext().setAttachments(aAttachments);

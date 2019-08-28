@@ -20,6 +20,8 @@ public class DubboLogFilter implements Filter {
 
     private static final Logger logger = LoggerFactory.getLogger(DubboLogFilter.class);
 
+    public static final String TRACE_ID = "traceId";
+
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
         String traceId = getTraceId();
@@ -33,25 +35,26 @@ public class DubboLogFilter implements Filter {
         long elapsed = System.currentTimeMillis() - startTime;
         //如果发生异常 则打印异常日志
         if (result.hasException() && invoker.getInterface() != GenericService.class) {
-            logger.error("traceId={} InterfaceName={} dubbo执行异常: {}", traceId, rpcName, result.getException());
+            logger.error("InterfaceName={} dubbo执行异常: {}", rpcName, result.getException());
         } else {
-            logger.info("traceId={} >>> InterfaceName={} , Resposne={} , SpendTime={} ms", traceId, rpcName, JSON.toJSONString(new Object[]{result.getValue()}), elapsed);
+            logger.info("InterfaceName={} , Resposne={} , SpendTime={} ms", rpcName, JSON.toJSONString(new Object[]{result.getValue()}), elapsed);
         }
         //返回结果响应结果
         return result;
     }
 
     private String getTraceId(){
-        String traceId = RpcContext.getContext().getAttachment(HttpTraceLogFilter.TRACE_ID);
+
+        String traceId = RpcContext.getContext().getAttachment(TRACE_ID);
         if(StringUtils.isBlank(traceId)){
-            traceId = MDC.get(HttpTraceLogFilter.TRACE_ID);
-            if(StringUtils.isNotBlank(traceId)){
-                Map<String,String> aAttachments = new HashMap<>();
-                aAttachments.put(HttpTraceLogFilter.TRACE_ID,traceId);
-                RpcContext.getContext().setAttachments(aAttachments);
-            }
+
+            traceId = MDC.get(TRACE_ID);
+
+            Map<String,String> aAttachments = new HashMap<>();
+            aAttachments.put(TRACE_ID,traceId);
+            RpcContext.getContext().setAttachments(aAttachments);
         }else{
-            MDC.put(HttpTraceLogFilter.TRACE_ID,traceId);
+            MDC.put(TRACE_ID,traceId);
         }
         return traceId;
     }

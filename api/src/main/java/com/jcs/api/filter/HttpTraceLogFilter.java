@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * @author lichensi
+ * @author
  * @date: 2019-07-12 17:15
  * @des: HTTP请求调用日志过滤器
  */
@@ -77,7 +77,7 @@ public class HttpTraceLogFilter extends OncePerRequestFilter {
                 traceLog.setParameterMap(request.getParameterMap());
                 traceLog.setRequestBody(getRequestBody(request));
                 traceLog.setResponseBody(getResponseBody(response));
-                log.info("traceId={} , reuqestMethod={} , requestUri={} >>> httpStatus={} , {} , spendTime={} ms", MDC.get(TRACE_ID), request.getMethod(), path, response.getStatus() , traceLog, (System.currentTimeMillis() - startTime));
+                log.info("reuqestMethod={} , requestUri={} >>> httpStatus={} , {} , spendTime={} ms",request.getMethod(), path, response.getStatus() , traceLog, (System.currentTimeMillis() - startTime));
             }
             MDC.clear();
             updateResponse(response);

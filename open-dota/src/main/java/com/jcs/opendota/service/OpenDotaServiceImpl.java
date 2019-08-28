@@ -5,6 +5,7 @@ import com.jcs.base.response.Response;
 import com.jcs.opendota.mapper.HeroMapper;
 import com.jcs.opendota.model.Hero;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 
 /**
  * @auther xukh
