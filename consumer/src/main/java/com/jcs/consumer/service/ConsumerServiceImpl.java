@@ -43,7 +43,7 @@ public class ConsumerServiceImpl implements ConsumerService{
                 instance.traceIdThreadPool(new Runnable() {
                     @Override
                     public void run() {
-                        String traceId = RpcContext.getContext().getAttachment(HttpTraceLogFilter.TRACE_ID);
+                        String traceId = RpcContext.getContext().getAttachment("traceId");
                         log.info("traceId={}",traceId);
                         System.out.println(traceId);
                     }
