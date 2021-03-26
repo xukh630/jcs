@@ -31,4 +31,15 @@ public enum BussiEnum {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    public static BussiEnum getEnumIndex(Integer code) {
+        BussiEnum[] bussiEnums = BussiEnum.values();
+        for (BussiEnum bussiEnum : bussiEnums) {
+            if (bussiEnum.code.equals(code)){
+                return bussiEnum;
+            }
+        }
+        return null;
+    }
+
 }
