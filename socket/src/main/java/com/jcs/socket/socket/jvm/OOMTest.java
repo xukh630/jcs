@@ -15,12 +15,11 @@ public class OOMTest {
 
 
     public static void main(String[] args) {
-        //heapOom();
+        int a = 0;
+        int b = 0;
 
-//        OOMTest test = new OOMTest();
-//        test.stackLeak();
-
-        constantPoolOverflow();
+        System.out.println(a++);
+        System.out.println(b++);
     }
 
     /**

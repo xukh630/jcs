@@ -10,9 +10,9 @@ public class Singleton {
     private static volatile Singleton singleton = null;
 
     private static Singleton getInstance(){
-        if (null != singleton){
+        if (null != singleton){                     //没创建对象才去竞争锁,  减少锁竞争
             synchronized (Singleton.class){
-                if (null != singleton){
+                if (null != singleton){             //防止重复创建
                     singleton = new Singleton();
                 }
             }

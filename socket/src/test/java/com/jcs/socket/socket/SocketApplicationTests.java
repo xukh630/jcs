@@ -10,7 +10,7 @@ class SocketApplicationTests {
 
     @Test
     public void testStrongReference() {
-
+        System.out.println(123);
     }
 
 }
